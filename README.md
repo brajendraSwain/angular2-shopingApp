@@ -15,6 +15,7 @@ Trying out this app is very easy. You need to have [node](https://nodejs.org/en/
 You are done.
 ## Service set up
 
+1. Service git url: `https://github.com/gandhireddyp/sample.git`
 
 
 ## Running
