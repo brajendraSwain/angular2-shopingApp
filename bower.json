@@ -1,0 +1,23 @@
+{
+  "name": "angular2-quickstart",
+  "description": "",
+  "main": "",
+  "authors": [
+    "brajendraSwain <braja.vssut@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/brajendraSwain/angular2-sample",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.1",
+    "bootstrap": "^3.3.6"
+  }
+}

@@ -1,0 +1,61 @@
+<div class="container app-body">
+		<div class="signUp-box">
+			<form name="myForm">
+				<div class="input-group myAppGroup">
+					<div class="input-group-addon appText" id="basic-addon1">Full Name</div>
+					<input type="text" class="form-control" [(ngModel)]="fullName" placeholder="full name" aria-describedby="basic-addon1" ngControl="name"  #name="ngForm" (keyup)="onKeyUpFullName($event)" (blur)="onKeyUpFullName($event)">
+				</div>
+				<div [hidden]="isFullNameNotNull || name.untouched " class="alert alert-danger myShop-alert">
+						Full Name is required
+				</div>
+
+				<div class="input-group myAppGroup">
+				  <div class="input-group-addon appText" id="basic-addon1">User Name</div>
+				  <input type="text" class="form-control" [(ngModel)]="username" placeholder="Username" aria-describedby="basic-addon1" ngControl="userName"  #userName="ngForm" (keyup)="onKeyUpUsername($event)" (blur)="onKeyUpUsername($event)">
+				</div>
+				<div [hidden]="isUserNameNotNull || userName.untouched  " class="alert alert-danger myShop-alert">
+						User Name is required
+				</div>
+
+				<div class="input-group myAppGroup">
+				  <div class="input-group-addon appText" id="basic-addon1">Email</div>
+				  <input type="email" class="form-control" [(ngModel)]="email" placeholder="email" aria-describedby="basic-addon1" ngControl="myEmail"  #myEmail="ngForm" (keyup)="onKeyUpEmail($event)" (blur)="onKeyUpEmail($event)">
+				</div>
+
+				<div [hidden]="isEmailNotNull || myEmail.untouched  " class="alert alert-danger myShop-alert">
+						Email is required
+				</div>
+
+				<div [hidden]="isEmailValid || myEmail.untouched" class="alert alert-danger myShop-alert">
+						Email is not valid
+				</div>
+
+
+				<div class="input-group myAppGroup">
+				  <div class="input-group-addon appText" id="basic-addon1">Password</div>
+				  <input type="password" class="form-control" [(ngModel)]="passwordChk" placeholder="Password" aria-describedby="basic-addon1" ngControl="myPasswordChk"  #myPasswordChk="ngForm" (keyup)="onKeyUpPasswordChk($event)" (blur)="onKeyUpPasswordChk($event)">
+				</div>
+
+				<div [hidden]="isPasswordChkNotNull || myPasswordChk.untouched || true " class="alert alert-danger myShop-alert">
+						Password is required
+				</div>
+
+				<div class="input-group myAppGroup">
+				  <div class="input-group-addon appText" id="basic-addon1">Re-enter Password</div>
+				  <input type="password" class="form-control" [(ngModel)]="password" placeholder="Password" aria-describedby="basic-addon1" ngControl="myPassword"  #myPassword="ngForm"  (keyup)="onKeyUpPassword($event)" (blur)="onKeyUpPassword($event)">
+				</div>
+
+				<div [hidden]="isPasswordNotNull || myPassword.untouched " class="alert alert-danger myShop-alert">
+						Password is required
+				</div>
+
+				<div [hidden]="isPasswordMatched || myPassword.untouched " class="alert alert-danger myShop-alert">
+						Both Passwords are not matching
+				</div>
+
+				<div class="buttonSection">
+					<button type="button" [ngClass]="{btn: true, 'btn-primary': true, disabled: !isRegisterBtnEnabled}" (click)="registerClickHandle()">Register</button>
+				</div>
+			</form>
+		</div>
+</div>
