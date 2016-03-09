@@ -21,3 +21,9 @@ You are done.
 ## Running
 
 In order to run the app just run `npm start` from within the cloned `countries` directory.
+
+## Testing
+
+In order to run unit tests written for the app run perform the below steps.
+  1. run `npm run watch` -- it will transpiled all the typescritp file to java script file and keep a watch on the chenges
+  2. run `npm run test`  -- it will run unit tests through the karma test and will re-run tests whenever the .js compiled files are changed.
