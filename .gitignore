@@ -27,6 +27,7 @@ build/Release
 node_modules
 typings
 bower_components
+karma_html
 
 # Optional npm cache directory
 .npm

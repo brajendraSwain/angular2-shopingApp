@@ -2,12 +2,15 @@
   "name": "angular2-quickstart",
   "version": "1.0.0",
   "scripts": {
-    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",    
+    "test": "karma start karma.conf.js --reporters html,dots",
+    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" ",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
+    "watch": "tsc --watch",
+    "clean": "rimraf src/**/*.js src/**/*.js.map ",
     "lite": "lite-server",
     "typings": "typings",
-    "postinstall": "typings install" 
+    "postinstall": "typings install"
   },
   "license": "ISC",
   "dependencies": {
@@ -21,8 +24,15 @@
   },
   "devDependencies": {
     "concurrently": "^2.0.0",
+    "jasmine": "2.3.2",
+    "karma": "^0.12.37",
+    "karma-chrome-launcher": "^0.1.4",
+    "karma-cli": "^0.0.4",
+    "karma-html-reporter": "^0.2.7",
+    "karma-jasmine": "^0.3.6",
     "lite-server": "^2.1.0",
+    "rimraf": "^2.4.3",
     "typescript": "^1.7.5",
-    "typings":"^0.6.8"
+    "typings": "^0.6.8"
   }
 }
