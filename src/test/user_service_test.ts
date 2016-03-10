@@ -14,9 +14,8 @@ class MockUserService extends UserService {
 describe('with mocked user', () => {
 	beforeEachProviders(() => [provide(UserService, { useClass: MockUserService })]);
 
-	it('should greet', injectAsync([UserService], (service) => {
+	it('should get user', injectAsync([UserService], (service) => {
 		return service.getUsers().then((users) => {
-			debugger;
 			expect(users).toEqual(true);
 		});
 	}));

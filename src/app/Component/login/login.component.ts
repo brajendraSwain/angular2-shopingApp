@@ -7,8 +7,23 @@ import {User} from './../../Interfaces/user';
 var loginFlag = false;
 @Component({
   selector: 'shop-log-in',
-  templateUrl: 'src/app/Component/login/login.component.html',
-  styleUrls: ['src/app/Component/login/login.component.css'],
+  template: `
+    <div class="container app-body">
+    <li *ngFor="#user of users">
+        <span class="badge">{{user.id}}</span> {{user.fullName}}
+      </li>
+    <div class="login-box">
+      <div class="input-section">
+        <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+        <input type="password" class="form-control password" placeholder="Password" aria-describedby="basic-addon1">
+      </div>
+      <div class="buttonSection">
+        <button type="button" id="logInBtn" class="btn btn-primary" (click)="signinClickHandle()">Sign In</button>
+        <button type="button" id="registerBtn" class="btn btn-primary" (click)="onRegisterClick()">Don't have an account</button>
+      </div>
+    </div>
+</div>
+  `,
   providers: [UserService]
 })
 export class LoginComponent implements OnInit {

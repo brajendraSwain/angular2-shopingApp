@@ -1,40 +1,69 @@
 import {
-  iit,
-  it,
-  ddescribe,
   describe,
+  xdescribe,
+  it,
   expect,
   inject,
   injectAsync,
   TestComponentBuilder,
   beforeEachProviders,
-  fakeAsync,
-  tick
+  beforeEach
 } from 'angular2/testing';
-import { provide } from 'angular2/core';
 
-import { UserService } from './../app/services/user.service';
+import {
+  provide,
+  ApplicationRef
+} from 'angular2/core';
+
+import {setBaseTestProviders, resetBaseTestProviders} from 'angular2/testing';
+
+import {
+  TEST_BROWSER_PLATFORM_PROVIDERS,
+  TEST_BROWSER_APPLICATION_PROVIDERS
+} from 'angular2/platform/testing/browser';
+
+
 import { LoginComponent } from './../app/Component/login/login.component';
 
+import { Router, ROUTER_PROVIDERS, ROUTER_PRIMARY_COMPONENT, APP_BASE_HREF } from 'angular2/router';
 
-class MockUserService extends UserService {
-  getJSON(url: string) {
-    return Promise.resolve(true);
-  }
-}
+import {AppComponent} from './../app/app.component';
+
+import {MockApplicationRef} from 'angular2/src/mock/mock_application_ref';
+
+
+
+
+
 
 describe('Log in component', () => {
-  beforeEachProviders(() => [
-    provide(UserService, { useClass: MockUserService }),
-    UserService
-  ]);
 
-  it('Should have a login button', injectAsync([TestComponentBuilder], (tcb) => {
+
+  beforeEachProviders(() => [
+    ROUTER_PROVIDERS,
+    provide(APP_BASE_HREF, { useValue: '/' }),
+    provide(ROUTER_PRIMARY_COMPONENT, { useValue: AppComponent }),
+    provide(ApplicationRef, { useClass: MockApplicationRef })
+ ]);
+
+
+  setBaseTestProviders(TEST_BROWSER_PLATFORM_PROVIDERS, TEST_BROWSER_APPLICATION_PROVIDERS);
+
+  it('log in button should be there', injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
     return tcb.createAsync(LoginComponent).then((fixture) => {
       fixture.detectChanges();
       var compiled = fixture.debugElement.nativeElement;
-
       expect(compiled.querySelector('#logInBtn')).toHaveText('Sign In');
     });
   }));
+  
+  it('register in button should be there', injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+    return tcb.createAsync(LoginComponent).then((fixture) => {
+      fixture.detectChanges();
+      var compiled = fixture.debugElement.nativeElement;
+      expect(compiled.querySelector('#registerBtn')).toHaveText("Don't have an account");
+    });
+  }));
+
+
 });

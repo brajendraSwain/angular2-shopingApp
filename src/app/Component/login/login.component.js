@@ -47,8 +47,7 @@ System.register(['angular2/core', 'angular2/router', './../../services/user.serv
                 LoginComponent = __decorate([
                     core_1.Component({
                         selector: 'shop-log-in',
-                        templateUrl: 'src/app/Component/login/login.component.html',
-                        styleUrls: ['src/app/Component/login/login.component.css'],
+                        template: "\n    <div class=\"container app-body\">\n    <li *ngFor=\"#user of users\">\n        <span class=\"badge\">{{user.id}}</span> {{user.fullName}}\n      </li>\n    <div class=\"login-box\">\n      <div class=\"input-section\">\n        <input type=\"text\" class=\"form-control\" placeholder=\"Username\" aria-describedby=\"basic-addon1\">\n        <input type=\"password\" class=\"form-control password\" placeholder=\"Password\" aria-describedby=\"basic-addon1\">\n      </div>\n      <div class=\"buttonSection\">\n        <button type=\"button\" id=\"logInBtn\" class=\"btn btn-primary\" (click)=\"signinClickHandle()\">Sign In</button>\n        <button type=\"button\" id=\"registerBtn\" class=\"btn btn-primary\" (click)=\"onRegisterClick()\">Don't have an account</button>\n      </div>\n    </div>\n</div>\n  ",
                         providers: [user_service_1.UserService]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router, user_service_1.UserService])

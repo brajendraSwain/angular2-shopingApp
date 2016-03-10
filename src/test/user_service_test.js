@@ -32,9 +32,8 @@ System.register(['angular2/testing', 'angular2/core', './../app/services/user.se
             }(user_service_1.UserService));
             testing_1.describe('with mocked user', function () {
                 testing_1.beforeEachProviders(function () { return [core_1.provide(user_service_1.UserService, { useClass: MockUserService })]; });
-                testing_1.it('should greet', testing_1.injectAsync([user_service_1.UserService], function (service) {
+                testing_1.it('should get user', testing_1.injectAsync([user_service_1.UserService], function (service) {
                     return service.getUsers().then(function (users) {
-                        debugger;
                         testing_1.expect(users).toEqual(true);
                     });
                 }));
