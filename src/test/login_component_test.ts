@@ -22,6 +22,9 @@ import {
   TEST_BROWSER_APPLICATION_PROVIDERS
 } from 'angular2/platform/testing/browser';
 
+import {BasicTestSetup} from './basic_test_setup.js';
+
+
 
 import { LoginComponent } from './../app/Component/login/login.component';
 
@@ -34,7 +37,7 @@ import {MockApplicationRef} from 'angular2/src/mock/mock_application_ref';
 
 
 
-
+var basicTestSetup = new BasicTestSetup();
 
 describe('Log in component', () => {
 
@@ -46,8 +49,7 @@ describe('Log in component', () => {
     provide(ApplicationRef, { useClass: MockApplicationRef })
  ]);
 
-
-  setBaseTestProviders(TEST_BROWSER_PLATFORM_PROVIDERS, TEST_BROWSER_APPLICATION_PROVIDERS);
+  basicTestSetup.initialSetup();
 
   it('log in button should be there', injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
     return tcb.createAsync(LoginComponent).then((fixture) => {

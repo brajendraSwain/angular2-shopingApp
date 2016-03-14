@@ -15,11 +15,10 @@ module.exports = function(config) {
       
       {pattern: 'node_modules/angular2/bundles/router.dev.js', included: true, watched: true},
       {pattern: 'node_modules/angular2/bundles/testing.dev.js', included: true, watched: true},
-      {pattern: 'node_modules/angular2/bundles/http.dev.js', included: true, watched: true},
       {pattern: 'bower_components/jquery/dist/jquery.min.js', included: true, watched: true},
+      {pattern: 'node_modules/angular2/bundles/http.dev.js', included: true, watched: true},
 
       {pattern: 'karma-test-shim.js', included: true, watched: true},
-
 
       // paths loaded via module imports
       {pattern: 'src/**/*.js', included: false, watched: true},
