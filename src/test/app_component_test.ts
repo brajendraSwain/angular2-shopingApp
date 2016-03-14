@@ -108,12 +108,48 @@ describe('Router tests', () => {
   }));
 
   //specs
-  it('Should be able to navigate to Login', done => {
-    router.navigate(['Login']).then(() => {
+  it('defauld load url is Login', done => {
+    router.navigateByUrl('/').then(() => {
+      expect(window.location.pathname).toBe('/login');
       done();
     }).catch(e => done.fail(e));
   });
 
+  it('Should be able to navigate to Login', done => {
+    router.navigate(['Login']).then(() => {
+      console.log('location------', location, window.location.pathname);
+      // expect(location.path()).toBe('/home');
+      expect(window.location.pathname).toBe('/login');
+      done();
+    }).catch(e => done.fail(e));
+  });
+
+  it('Should be able to navigate to Home', done => {
+    router.navigate(['Home']).then(() => {
+      console.log('location------', location, window.location.pathname);
+      // expect(location.path()).toBe('/home');
+      expect(window.location.pathname).toBe('/home');
+      done();
+    }).catch(e => done.fail(e));
+  });
+
+  it('Should be able to navigate to Signup', done => {
+    router.navigate(['Signup']).then(() => {
+      console.log('location------', location, window.location.pathname);
+      // expect(location.path()).toBe('/home');
+      expect(window.location.pathname).toBe('/signup');
+      done();
+    }).catch(e => done.fail(e));
+  });
+
+  it('Should be able to navigate to Product Add', done => {
+    router.navigate(['ProductAdd']).then(() => {
+      console.log('location------', location, window.location.pathname);
+      // expect(location.path()).toBe('/home');
+      expect(window.location.pathname).toBe('/product-add');
+      done();
+    }).catch(e => done.fail(e));
+  });
   // it('should redirect not registered urls to Home', done => {
   //   router.navigateByUrl('/unknown').then(() => {
   //     expect(location.path()).toBe('/home');
