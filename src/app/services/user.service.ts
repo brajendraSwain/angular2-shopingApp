@@ -1,6 +1,8 @@
 import {Injectable} from 'angular2/core';
 import 'rxjs/add/operator/map';
 
+var baseUrl = 'http://localhost:8080/';
+
 @Injectable()
 export class UserService {
 
@@ -8,16 +10,16 @@ export class UserService {
 
 
 	getUsers(){
-		return this.getJSON('http://localhost:8080/sample/api/users');
+		return this.getJSON('sample/api/users');
 	}
 
 	addUser(userData){
-		return this.postJSON('http://localhost:8080/sample/api/users', userData);
+		return this.postJSON('sample/api/users', userData);
 	}
 
 	postJSON(url, inputData) {
 		console.log('inputData', inputData);
-		return $.ajax(url, {
+		return $.ajax(baseUrl+url, {
 			method: 'POST',
 			crossDomain: true,
 			data: JSON.stringify(inputData),
@@ -32,7 +34,8 @@ export class UserService {
 	}
 
 	getJSON(url) {
-		return $.ajax(url, {
+
+		return $.ajax(baseUrl+url, {
 			method: 'GET',
 			crossDomain: true
 		});

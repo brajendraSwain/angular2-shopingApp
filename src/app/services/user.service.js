@@ -11,7 +11,7 @@ System.register(['angular2/core', 'rxjs/add/operator/map'], function(exports_1, 
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var UserService;
+    var baseUrl, UserService;
     return {
         setters:[
             function (core_1_1) {
@@ -19,18 +19,19 @@ System.register(['angular2/core', 'rxjs/add/operator/map'], function(exports_1, 
             },
             function (_1) {}],
         execute: function() {
+            baseUrl = 'http://localhost:8080/';
             UserService = (function () {
                 function UserService() {
                 }
                 UserService.prototype.getUsers = function () {
-                    return this.getJSON('http://localhost:8080/sample/api/users');
+                    return this.getJSON('sample/api/users');
                 };
                 UserService.prototype.addUser = function (userData) {
-                    return this.postJSON('http://localhost:8080/sample/api/users', userData);
+                    return this.postJSON('sample/api/users', userData);
                 };
                 UserService.prototype.postJSON = function (url, inputData) {
                     console.log('inputData', inputData);
-                    return $.ajax(url, {
+                    return $.ajax(baseUrl + url, {
                         method: 'POST',
                         crossDomain: true,
                         data: JSON.stringify(inputData),
@@ -44,7 +45,7 @@ System.register(['angular2/core', 'rxjs/add/operator/map'], function(exports_1, 
                     });
                 };
                 UserService.prototype.getJSON = function (url) {
-                    return $.ajax(url, {
+                    return $.ajax(baseUrl + url, {
                         method: 'GET',
                         crossDomain: true
                     });

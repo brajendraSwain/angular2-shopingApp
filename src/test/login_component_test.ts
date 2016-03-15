@@ -7,12 +7,15 @@ import {
   injectAsync,
   TestComponentBuilder,
   beforeEachProviders,
-  beforeEach
+  beforeEach,
+  tick,
+  fakeAsync
 } from 'angular2/testing';
 
 import {
   provide,
-  ApplicationRef
+  ApplicationRef,
+  Component
 } from 'angular2/core';
 
 import {setBaseTestProviders, resetBaseTestProviders} from 'angular2/testing';
@@ -67,5 +70,42 @@ describe('Log in component', () => {
     });
   }));
 
+  // it('After log in user should be navigated to home page', injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+  //   return tcb.createAsync(LoginComponent).then((fixture) => {
+  //     fixture.detectChanges();
+  //     var compiled = fixture.debugElement.nativeElement;
+
+  //     compiled.querySelector('#logInBtn').click();
+
+  //     tick();
+  //     fixture.detectChanges();
+  //     setTimeout(() => { 
+  //       var compiled2 = fixture.debugElement.nativeElement;
+  //       console.log('compiled2=----111', compiled2, document.URL);
+  //     }, 1000);
+      
+
+  //   });
+  // }));
+
+  // it('should accept pin (with fakeAsync)', inject([TestComponentBuilder], fakeAsync((tcb) => {
+  //   var fixture;
+  //   tcb.createAsync(TestComponent).then((rootFixture) => {
+  //     fixture = rootFixture
+  //   });
+
+  //   console.log('url', document.URL);
+  //   tick();
+
+  //   var compiled = fixture.debugElement.nativeElement;
+  //   compiled.querySelector('#logInBtn').click();
+
+  //   tick();
+
+  //   fixture.detectChanges();
+  //   var compiled2 = fixture.debugElement.nativeElement;
+
+  //   console.log('compiled2=----111', compiled2 , compiled);
+  // })));
 
 });

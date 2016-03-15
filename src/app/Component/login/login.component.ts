@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
     this._router.navigate(['Signup']);
   }
   signinClickHandle() {
+    console.log('sign in clicked.......');
     this._router.navigate(['Home']);
   }
 }
