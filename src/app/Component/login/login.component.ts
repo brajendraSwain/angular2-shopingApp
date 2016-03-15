@@ -36,7 +36,12 @@ export class LoginComponent implements OnInit {
     private _router: Router, private _userSevice: UserService) { }
 
   getUsers() {
-    this._userSevice.getUsers().then((users, ops, ops2) => { console.log('users', users, ops, ops2); this.users = users });
+    this._userSevice.getUsers()
+    .subscribe(
+    users => { console.log('users', users); this.users = users },
+      err => { console.log('err', err); },
+      () => { console.log('get user is completed'); }
+    );
   }
 
   ngOnInit() {

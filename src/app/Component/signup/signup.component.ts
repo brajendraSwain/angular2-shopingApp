@@ -132,10 +132,10 @@ export class SignupComponent implements OnInit {
 
   registerClickHandle() {
     console.log('this', this);
-    if(!this.isRegisterBtnEnabled){
-      this.resetData();
-      return;
-    }
+    // if(!this.isRegisterBtnEnabled){
+    //   this.resetData();
+    //   return;
+    // }
     var inputData = {
       "fullName": this.fullName, 
       "email": this.email,
@@ -144,20 +144,26 @@ export class SignupComponent implements OnInit {
     };
     
     // var inputData = {
-    //   "fullName": 'brajendra',
+    //   "fullName": 'brajendra11',
     //   "accountExpired": false,
     //   "accountLocked": false,
     //   "email": 'sbbsb123@fsf.com',
     //   "enabled": false,
     //   "password": 'kumar',
     //   "passwordExpired": false,
-    //   "username": 'bb123'
+    //   "username": 'bb123zzkk11'
     // };
 
-    this._userService.addUser(inputData).then(res => { 
-      console.log('res----',res);
-      this._router.navigate(['Login']);
-    });
+    // this._userService.addUser(inputData).then(res => { 
+    //   console.log('res----',res);
+    //   this._router.navigate(['Login']);
+    // });
 
+    this._userService.addUser(inputData)
+      .subscribe(
+      data => { console.log('data', data); },
+      err => { console.log('err', err); },
+      () => { console.log('post is completed'); }
+      );
   }
 }

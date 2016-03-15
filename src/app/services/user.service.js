@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'rxjs/add/operator/map'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/http', 'rxjs/add/operator/map'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,49 +10,45 @@ System.register(['angular2/core', 'rxjs/add/operator/map'], function(exports_1, 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, http_1;
     var baseUrl, UserService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
             function (_1) {}],
         execute: function() {
             baseUrl = 'http://localhost:8080/';
             UserService = (function () {
-                function UserService() {
+                function UserService(_http) {
+                    this._http = _http;
                 }
                 UserService.prototype.getUsers = function () {
-                    return this.getJSON('sample/api/users');
+                    return this.httpGetJson('sample/api/users');
                 };
                 UserService.prototype.addUser = function (userData) {
-                    return this.postJSON('sample/api/users', userData);
+                    return this.httpPostJson('sample/api/users', userData);
                 };
-                UserService.prototype.postJSON = function (url, inputData) {
-                    console.log('inputData', inputData);
-                    return $.ajax(baseUrl + url, {
-                        method: 'POST',
-                        crossDomain: true,
-                        data: JSON.stringify(inputData),
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        error: function (error) {
-                            console.log('error', error);
-                        }
-                    });
+                UserService.prototype.httpGetJson = function (url) {
+                    return this._http.get(baseUrl + url)
+                        .map(function (res) { return res.json(); });
                 };
-                UserService.prototype.getJSON = function (url) {
-                    return $.ajax(baseUrl + url, {
-                        method: 'GET',
-                        crossDomain: true
-                    });
+                UserService.prototype.httpPostJson = function (url, inputData) {
+                    var jsonData = JSON.stringify(inputData);
+                    var headers = new http_1.Headers();
+                    headers.append('Accept', 'application/json');
+                    headers.append('Content-Type', 'application/json');
+                    return this._http.post(baseUrl + url, jsonData, {
+                        headers: headers
+                    }).map(function (res) { return res.json(); });
                 };
                 UserService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], UserService);
                 return UserService;
             }());

@@ -27,6 +27,7 @@ import {
 
 import {BasicTestSetup} from './basic_test_setup.js';
 
+import { HTTP_PROVIDERS } from 'angular2/http';
 
 
 import { LoginComponent } from './../app/Component/login/login.component';
@@ -47,6 +48,7 @@ describe('Log in component', () => {
 
   beforeEachProviders(() => [
     ROUTER_PROVIDERS,
+    HTTP_PROVIDERS,
     provide(APP_BASE_HREF, { useValue: '/' }),
     provide(ROUTER_PRIMARY_COMPONENT, { useValue: AppComponent }),
     provide(ApplicationRef, { useClass: MockApplicationRef })
