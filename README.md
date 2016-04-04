@@ -20,7 +20,7 @@ You are done.
 
 ## Running
 
-In order to run the app just run `npm start` from within the cloned `countries` directory.
+In order to run the app just run `npm start` from the project directory.
 
 ## Test
 
