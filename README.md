@@ -10,7 +10,8 @@ Trying out this app is very easy. You need to have [node](https://nodejs.org/en/
 1. clone the repo locally on your machine using `git clone git@github.com:brajendraSwain/angular2-shopingApp`
 2. Next go to root directory `cd angular2-shopingApp`
 3. Run `npm install`.
-4. Set up the service endpoints.
+4. Run `bower install`.
+5. Set up the service endpoints.
 
 You are done.
 ## Service set up
